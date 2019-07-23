@@ -1,3 +1,5 @@
+This fork is to fix crash with "Methods marked with @UiThread must be executed on the main thread"
+
 # blue_thermal_printer
 
 https://pub.dev/packages/blue_thermal_printer
