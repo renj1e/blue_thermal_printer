@@ -88,6 +88,33 @@ class BlueThermalPrinter {
 
   Future<dynamic> printLeftRight(String string1,String string2,int size) =>
       _channel.invokeMethod('printLeftRight', {'string1': string1, 'string2': string2,'size': size });
+  
+  ///print3Column(String string1, String string2, String string3, int size,{String? charset, String? format})
+  Future<dynamic> print3Column(
+          String string1, String string2, String string3, int size,
+          {String? charset, String? format}) =>
+      _channel.invokeMethod('print3Column', {
+        'string1': string1,
+        'string2': string2,
+        'string3': string3,
+        'size': size,
+        'charset': charset,
+        'format': format
+      });
+
+  ///print4Column(String string1, String string2, String string3,String string4, int size,{String? charset, String? format})
+  Future<dynamic> print4Column(String string1, String string2, String string3,
+          String string4, int size,
+          {String? charset, String? format}) =>
+      _channel.invokeMethod('print4Column', {
+        'string1': string1,
+        'string2': string2,
+        'string3': string3,
+        'string4': string4,
+        'size': size,
+        'charset': charset,
+        'format': format
+      });
 }
 
 
