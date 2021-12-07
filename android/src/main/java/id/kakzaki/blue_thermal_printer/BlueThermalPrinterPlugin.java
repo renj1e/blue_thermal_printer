@@ -439,8 +439,8 @@ public class BlueThermalPrinterPlugin implements MethodCallHandler, RequestPermi
 
   private void printCustom(Result result, String message, int size, int align) {
     // Print config "mode"
-    byte[] cc = new byte[] { 0x16, 0x09, 0x02 }; // 0- normal size text
-    byte[] cc1 = new byte[] {0x1B, 0x21, 0x03 }; // 0- normal size text
+    byte[] cc = new byte[] {5, 3, 0}; // 0- small size text
+    byte[] cc1 = new byte[] {5, 3, 0 }; // 0- normal size text
     byte[] bb = new byte[] { 0x1B, 0x21, 0x08 }; // 1- only bold text
     byte[] bb2 = new byte[] { 0x1B, 0x21, 0x20 }; // 2- bold with medium text
     byte[] bb3 = new byte[] { 0x1B, 0x21, 0x10 }; // 3- bold with large text
