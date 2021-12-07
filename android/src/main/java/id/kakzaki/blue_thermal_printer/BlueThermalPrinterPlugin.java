@@ -258,6 +258,33 @@ public class BlueThermalPrinterPlugin implements MethodCallHandler, RequestPermi
         result.error("invalid_argument", "argument 'message' not found", null);
       }
       break;
+              case "print3Column":
+        if (arguments.containsKey("string1")) {
+          String string1 = (String) arguments.get("string1");
+          String string2 = (String) arguments.get("string2");
+          String string3 = (String) arguments.get("string3");
+          int size = (int) arguments.get("size");
+          String charset = (String) arguments.get("charset");
+          String format = (String) arguments.get("format");
+          print3Column(result, string1, string2,string3, size, charset,format);
+        } else {
+          result.error("invalid_argument", "argument 'message' not found", null);
+        }
+        break;
+      case "print4Column":
+        if (arguments.containsKey("string1")) {
+          String string1 = (String) arguments.get("string1");
+          String string2 = (String) arguments.get("string2");
+          String string3 = (String) arguments.get("string3");
+          String string4 = (String) arguments.get("string4");
+          int size = (int) arguments.get("size");
+          String charset = (String) arguments.get("charset");
+          String format = (String) arguments.get("format");
+          print4Column(result, string1, string2,string3,string4, size, charset,format);
+        } else {
+          result.error("invalid_argument", "argument 'message' not found", null);
+        }
+        break;
     default:
       result.notImplemented();
       break;
