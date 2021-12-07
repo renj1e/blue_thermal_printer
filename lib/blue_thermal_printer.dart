@@ -92,7 +92,7 @@ class BlueThermalPrinter {
   ///print3Column(String string1, String string2, String string3, int size,{String? charset, String? format})
   Future<dynamic> print3Column(
           String string1, String string2, String string3, int size,
-          {String? charset, String? format}) =>
+          {String charset, String format}) =>
       _channel.invokeMethod('print3Column', {
         'string1': string1,
         'string2': string2,
@@ -105,7 +105,7 @@ class BlueThermalPrinter {
   ///print4Column(String string1, String string2, String string3,String string4, int size,{String? charset, String? format})
   Future<dynamic> print4Column(String string1, String string2, String string3,
           String string4, int size,
-          {String? charset, String? format}) =>
+          {String charset, String format}) =>
       _channel.invokeMethod('print4Column', {
         'string1': string1,
         'string2': string2,
