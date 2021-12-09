@@ -20,13 +20,13 @@ class BlueThermalPrinter {
       const MethodChannel('$namespace/methods');
 
   static const EventChannel _readChannel =
-  const EventChannel('$namespace/read');
+      const EventChannel('$namespace/read');
 
   static const EventChannel _stateChannel =
-  const EventChannel('$namespace/state');
+      const EventChannel('$namespace/state');
 
   final StreamController<MethodCall> _methodStreamController =
-  new StreamController.broadcast();
+      new StreamController.broadcast();
 
   //Stream<MethodCall> get _methodStream => _methodStreamController.stream;
 
@@ -73,8 +73,9 @@ class BlueThermalPrinter {
   Future<dynamic> writeBytes(Uint8List message) =>
       _channel.invokeMethod('writeBytes', {'message': message});
 
-  Future<dynamic> printCustom(String message,int size, int align) =>
-      _channel.invokeMethod('printCustom', {'message': message, 'size': size, 'align': align});
+  Future<dynamic> printCustom(String message, int size, int align) =>
+      _channel.invokeMethod(
+          'printCustom', {'message': message, 'size': size, 'align': align});
 
   Future<dynamic> printNewLine() => _channel.invokeMethod('printNewLine');
 
@@ -83,12 +84,23 @@ class BlueThermalPrinter {
   Future<dynamic> printImage(String pathImage) =>
       _channel.invokeMethod('printImage', {'pathImage': pathImage});
 
-  Future<dynamic> printQRcode(String textToQR) =>
-      _channel.invokeMethod('printQRcode', {'textToQR': textToQR});
+  // Future<dynamic> printQRcode(String textToQR) =>
+  //     _channel.invokeMethod('printQRcode', {'textToQR': textToQR});
 
-  Future<dynamic> printLeftRight(String string1,String string2,int size) =>
-      _channel.invokeMethod('printLeftRight', {'string1': string1, 'string2': string2,'size': size });
-  
+  ///printQRcode(String textToQR, int width, int height, int align)
+  Future<dynamic> printQRcode(
+          String textToQR, int width, int height, int align) =>
+      _channel.invokeMethod('printQRcode', {
+        'textToQR': textToQR,
+        'width': width,
+        'height': height,
+        'align': align
+      });
+
+  Future<dynamic> printLeftRight(String string1, String string2, int size) =>
+      _channel.invokeMethod('printLeftRight',
+          {'string1': string1, 'string2': string2, 'size': size});
+
   ///print3Column(String string1, String string2, String string3, int size,{String? charset, String? format})
   Future<dynamic> print3Column(
           String string1, String string2, String string3, int size,
@@ -117,7 +129,6 @@ class BlueThermalPrinter {
       });
 }
 
-
 class BluetoothDevice {
   final String name;
   final String address;
@@ -131,11 +142,11 @@ class BluetoothDevice {
         address = map['address'];
 
   Map<String, dynamic> toMap() => {
-    'name': this.name,
-    'address': this.address,
-    'type': this.type,
-    'connected': this.connected,
-  };
+        'name': this.name,
+        'address': this.address,
+        'type': this.type,
+        'connected': this.connected,
+      };
 
   operator ==(Object other) {
     return other is BluetoothDevice && other.address == this.address;
